@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        $(function () {
+            // 1.获取样式值
+            console.log($("div").css("width"));
+            // 2.修改css值
+            // 属性名加引号  值可以不加引号和单位
+            $("div").css("width", "300px");
+            $("div").css("width", 300);
+            // 3.宽高都修改
+            $("div").css({
+                width: 400,
+                height: 400,
+                backgroundColor: "red"
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div>惊不惊喜,意不意外</div>
+    <div>惊不惊喜,意不意外</div>
+    <div>惊不惊喜,意不意外</div>
+    <div>惊不惊喜,意不意外</div>
+    <ul>
+        <li>相同的操作</li>
+        <li>相同的操作</li>
+        <li>相同的操作</li>
+    </ul>
+    <script>
+        // 1.获取四个div
+        console.log($('div'));
+        // 2.给四个div设置粉色  不能直接使用style
+        $('div').css('background', 'pink');
+        // 3.隐式迭代加上把匹配的元素内部进行循环遍历，给每个元素添加css
+        $('ul li').css('background', 'red');
+    </script>
+</body>
+
+</html>

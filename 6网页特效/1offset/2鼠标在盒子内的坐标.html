@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            margin: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <ul></ul>
+    <script>
+        var box = document.querySelector('.box');
+        var ul = document.querySelector('ul');
+        box.addEventListener('mousemove', function (e) {
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+            var x_li = document.createElement('li');
+            var y_li = document.createElement('li');
+            x_li.innerHTML = '距离盒子左边' + x + 'px';
+            y_li.innerHTML = '距离盒子上边' + x + 'px';
+            ul.appendChild(x_li);
+            ul.appendChild(y_li);
+            this.innerHTML = 'x坐标是：' + x + 'y坐标是：' + y;
+        })
+    </script>
+</body>
+
+</html>

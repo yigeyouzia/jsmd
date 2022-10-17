@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>多个里面筛选一个</li>
+        <li>多个里面筛选一个</li>
+        <li>多个里面筛选一个</li>
+        <li>多个里面筛选一个</li>
+        <li>多个里面筛选一个</li>
+    </ul>
+    <ol>
+        <li>多个里面筛选一个</li>
+        <li>多个里面筛选一个</li>
+        <li>多个里面筛选一个</li>
+        <li>多个里面筛选一个</li>
+        <li>多个里面筛选一个</li>
+    </ol>
+    <script>
+        $(function () {
+            // 1.first
+            $("ul li:first").css('color', 'red');
+            // 2.按索引
+            $("ul li:eq(2)").css('color', 'blue');
+            // 3.奇数行
+            $("ol li:odd").css('color', 'skyblue');
+            // 4.索引值是偶数
+            $("ol li:even").css('color', 'pink');
+        })
+    </script>
+</body>
+
+</html>

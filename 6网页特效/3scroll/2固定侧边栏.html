@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+
+        .slider-bar {
+            position: absolute;
+            left: 50%;
+            margin-left: 600px;
+            top: 300px;
+            width: 45px;
+            height: 130px;
+            background-color: pink;
+        }
+
+        .header {
+            height: 150px;
+            background-color: purple;
+        }
+
+        .banner {
+            height: 250px;
+            background-color: pink;
+        }
+
+        .main {
+            height: 1400px;
+            background-color: red;
+        }
+
+        span {
+            display: none;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+    <script>
+        var sliderbar = document.querySelector('.slider-bar');
+        var span = document.querySelector('.goBack');
+        var banner = document.querySelector('.banner');
+        var main = document.querySelector('.main');
+        var bannerTop = banner.offsetTop;  //172
+        var sliderTop = sliderbar.offsetTop - bannerTop;  //300-172
+        var mainTop = main.offsetTop;
+        // 1.添加页面滚动事件
+        document.addEventListener('scroll', function (e) {
+            console.log(11);
+            // 2.页面被卷去内容
+            console.log(window.pageYOffset);
+            if (window.pageYOffset > bannerTop) {
+                sliderbar.style.position = "fixed";
+                sliderbar.style.top = sliderTop + 'px';
+            } else {
+                sliderbar.style.position = "absolute";
+                sliderbar.style.top = 300 + 'px';
+            }
+            // 3.到大main显示字
+            if (window.pageYOffset > mainTop) {
+                span.style.display = "block";
+            } else {
+                span.style.display = "none";
+            }
+        })
+        // 4.点击返回顶部
+        span.addEventListener('click', function () {
+            // 不跟单位
+            animate(window, 0)
+        })
+
+        function animate(obj, target, callback) {
+            // console.log(callback);  callback = function() {}  调用的时候 callback()
+            // 先清除以前的定时器，只保留当前的一个定时器执行
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                // 步长值写到定时器的里面
+                // 把我们步长值改为整数 不要出现小数的问题
+                // var step = Math.ceil((target - obj.offsetLeft) / 10);
+                var step = (target - window.pageYOffset) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (window.pageYOffset == target) {
+                    // 停止动画 本质是停止定时器
+                    clearInterval(obj.timer);
+                    // 回调函数写到定时器结束里面
+                    // if (callback) {
+                    //     // 调用函数
+                    //     callback();
+                    // }
+                    callback && callback();
+                }
+                // 把每次加1 这个步长值改为一个慢慢变小的值  步长公式：(目标值 - 现在的位置) / 10
+                window.scroll(0, window.pageYOffset + step);
+            }, 15);
+        }
+    </script>
+</body>
+
+</html>

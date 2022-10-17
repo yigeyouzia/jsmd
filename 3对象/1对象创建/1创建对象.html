@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.通过字面量创建对象
+        var obj = {
+            name: "cyt",
+            age: 20,
+            sex: '男',
+            sayHi: function () {
+                console.log("hi~");
+            }
+        }
+        // 1.1调用对象属性
+        console.log(obj.name);
+        console.log(obj['name']);
+        // 1.2调用对象函数
+        obj.sayHi();
+
+        // 2.用new 创建对象
+        var obj1 = new Object();   //创建一个空的对象
+        obj1.name = 'cyt1';
+        obj1.age = 22;
+        obj1.SayHi1 = function () {
+            console.log("hi!");
+        }
+        console.log(obj1.name);
+
+    </script>
+</body>
+
+</html>

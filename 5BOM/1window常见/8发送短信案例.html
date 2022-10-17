@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    手机号码：<input type="text"> <button>发送</button>
+    <script>
+        var btn = document.querySelector("button");
+        var time = 10;
+        btn.addEventListener("click", function (e) {
+            btn.disabled = true;
+            // btn.innerHTML = "还剩10秒"
+            // 1.加入定时器
+            var timer = setInterval(function () {
+                if (time == 0) {
+                    clearInterval(timer);
+                    btn.disabled = false;
+                    btn.innerHTML = "发送";
+                    time = 10;   //重新定义10
+                } else {
+                    btn.innerHTML = '还剩' + time + '秒';
+                    time--;
+                }
+            }, 1000)
+
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 通过 var 关键词声明的变量没有块作用域。
+        var x = 10;
+        {
+            var x = 20;
+            console.log(x);  //20
+        }
+        console.log(x);   //20
+        // 2.let声明的变量
+        var x1 = 10;
+        {
+            let x1 = 20;
+            console.log(x1);   //20
+        }
+        console.log(x1);       //10
+        //3. 循环作用域
+        var i = 7;
+        for (var i = 0; i < 10; i++) {
+            // 一些语句
+        }
+        // 此处，i 为 10
+
+        let i1 = 7;
+        for (let i1 = 0; i < 10; i++) {
+            // 一些语句
+        }
+        // 此处 i 为 7
+        var a = 10;
+        var a = 222;
+        console.log(a);
+        // 4.重新声明  允许在程序的任何位置使用 var 重新声明 JavaScript 变量   只允许这一种情况
+        var x3 = 10;
+        // 现在，x 为 10
+        var x3 = 6;
+        // 现在，x 为 6
+
+        // 5.提升 提升
+        // 通过 var 声明的变量会提升到顶端。如果您不了解什么是提升（Hoisting)  let不会
+
+
+    </script>
+</body>
+
+</html>

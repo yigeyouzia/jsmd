@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>点我关闭定时</button>
+    <ul></ul>
+    <script>
+        var btn = document.querySelector('button');
+        var ul = document.querySelector('ul');
+        for (var i = 0; i < 100; i++) {
+            var timer = setTimeout(function () {
+                var li = document.createElement('li');
+                li.innerHTML = '爆炸了';
+                ul.appendChild(li);
+            }, 5000);
+        }
+        // clearTimeout(timer)  停止计时器
+        btn.addEventListener("click", function () {
+            clearTimeout(timer);
+        })
+    </script>
+</body>
+
+</html>

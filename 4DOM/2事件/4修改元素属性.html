@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="pic1">pic1</button>
+    <button id="pic2">pic2</button>
+    <img src="../../img/fuck.gif" alt="">
+    <script>
+        var p1 = document.getElementById('pic1');
+        var p2 = document.getElementById('pic2');
+        var img = document.querySelector('img');
+        p1.onclick = function () {
+            img.src = "../../img/img.jpeg";
+        }
+        p2.onclick = function () {
+            img.src = "../../img/fuck.gif";
+        }
+    </script>
+</body>
+
+</html>

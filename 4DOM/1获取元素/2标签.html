@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>cyt1</li>
+        <li>cyt2</li>
+        <li>cyt3</li>
+        <li>cyt4</li>
+    </ul>
+    <ol>
+        <li>ccc1</li>
+        <li>ccc2</li>
+        <li>ccc3</li>
+    </ol>
+    <script>
+        // 1.返回的是获取通过元素对象的集合  以伪数组形式存储
+        var lis = document.getElementsByTagName('li');
+        console.log(lis);
+        console.log(lis[0]);
+        // 2.遍历打印里面的元素
+        for (var i = 0; i < lis.length; i++) {
+            console.log(lis[i]);
+        }
+        // 3.Element.getElementsByTagName
+        var ol = document.getElementsByTagName('ol');
+        console.log(ol[0].getElementsByTagName('li'));
+
+
+    </script>
+</body>
+
+</html>

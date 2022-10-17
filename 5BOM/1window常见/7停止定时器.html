@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点我开启定时器</button>
+    <button>点我关闭定时</button>
+    <ul>输出：</ul>
+    <script>
+        var btn = document.querySelectorAll('button');
+        var ul = document.querySelector('ul');
+        btn[0].addEventListener('click', function () {
+            // 不加var  全局变量
+            time1 = setInterval(function () {
+                var li = document.createElement('li');
+                li.innerHTML = 'cyt';
+                ul.appendChild(li);
+            }, 1000)
+        })
+        btn[1].addEventListener("click", function () {
+            clearInterval(time1);
+        })
+    </script>
+</body>
+
+</html>

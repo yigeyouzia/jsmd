@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>传统</button>
+    <button>事件监听</button>
+    <button>IE9老版本</button>
+    <script>
+        // on开头注册事件
+        var btns = document.querySelectorAll('button');
+        btns[0].onclick = function () {
+            alert('11');
+        }
+        btns[0].onclick = function () {
+            // 不会覆盖
+            alert('22');
+        }
+        // 事件监听 
+        btns[1].addEventListener("click", function () {
+            alert("33");
+        })
+        btns[1].addEventListener("click", function () {
+            alert("44");
+        })
+        // attachEvent
+        btns[3].addEventListener("click", function () {
+            alert('1111');
+        })
+    </script>
+</body>
+
+</html>

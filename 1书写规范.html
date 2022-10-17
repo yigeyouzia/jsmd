@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh">
+<!-- all in one page -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>骂人宝典生成器(口吐芬芳)</title>
+    <!-- css here -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        @font-face {
+            font-family: "iconfont";
+            /* Project id 2924568 */
+            src: url('https://at.alicdn.com/t/font_2924568_2x0nbfq18yt.woff2?t=1636603832056') format('woff2'),
+                url('https://at.alicdn.com/t/font_2924568_2x0nbfq18yt.woff?t=1636603832056') format('woff'),
+                url('https://at.alicdn.com/t/font_2924568_2x0nbfq18yt.ttf?t=1636603832056') format('truetype');
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .icon-comment:before {
+            content: "\e9b2";
+        }
+
+        .icon-shetoujiance:before {
+            content: "\e724";
+        }
+
+
+        .chp_app {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+            background: #f9f9f9;
+        }
+
+        /* tips animations for windows */
+        .tipsAnimationWindowsShow {
+            animation: tipsAnimateWindowsShow 0.3s forwards;
+        }
+
+        .tipsAnimationWindowsHide {
+            animation: tipsAnimateWindowsHide 0.3s forwards;
+        }
+
+        @keyframes tipsAnimateWindowsShow {
+            0% {
+                top: -40px;
+            }
+
+            100% {
+                top: 80px;
+            }
+        }
+
+        @keyframes tipsAnimateWindowsHide {
+            0% {
+                top: 80px;
+            }
+
+            100% {
+                top: -40px;
+            }
+        }
+
+        /* tips animations for andriod or ios */
+        .tipsAnimationAppShow {
+            animation: tipsAnimateAppShow 0.3s forwards;
+        }
+
+        .tipsAnimationAppHide {
+            animation: tipsAnimateAppHide 0.3s forwards;
+        }
+
+        @keyframes tipsAnimateAppShow {
+            0% {
+                top: -30px;
+            }
+
+            100% {
+                top: 55px;
+            }
+        }
+
+        @keyframes tipsAnimateAppHide {
+            0% {
+                top: 55px;
+            }
+
+            100% {
+                top: -30px;
+            }
+        }
+
+        @media screen and (max-width: 1920px) {
+            .titleBar {
+                display: flex;
+                width: 100%;
+                height: 120px;
+                justify-content: center;
+                align-items: center;
+                background: #1092de;
+                color: #fff;
+                font-size: 20px;
+                letter-spacing: 2px;
+            }
+
+            .icon-comment {
+                position: absolute;
+                color: #1092de;
+                font-size: 30px;
+                top: 20px;
+                left: 20px;
+            }
+
+            .icon-shetoujiance {
+                color: #fff;
+                font-size: 30px;
+                margin: 0 10px;
+            }
+
+            .mainContentBar {
+                margin-top: 60px;
+                width: 850px;
+                height: 550px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                border-radius: 15px;
+                background: #fff;
+            }
+
+            .mainContent {
+                width: 780px;
+                min-height: 100px;
+                border-bottom: 2.5px solid #1092de;
+                color: rgb(36, 39, 51);
+                font-size: 18px;
+                font-weight: bold;
+                display: flex;
+                align-items: flex-end;
+                box-sizing: border-box;
+                padding: 25px;
+                letter-spacing: 2px;
+                line-height: 40px;
+            }
+
+            .controlTipsBar {
+                margin-top: 30px;
+                width: 850px;
+                height: 100px;
+                display: flex;
+                align-items: center;
+                box-sizing: border-box;
+                padding: 0 25px;
+            }
+
+            .pre_btn {
+                width: 120px;
+                height: 40px;
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #1092de;
+                color: #fff;
+                font-size: 18px;
+                margin-right: 10px;
+                cursor: pointer;
+            }
+
+            .copy_btn {
+                width: 120px;
+                height: 40px;
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #1092de;
+                color: #fff;
+                font-size: 18px;
+                margin: 0 10px;
+                cursor: pointer;
+            }
+
+            .next_btn {
+                width: 120px;
+                height: 40px;
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #1092de;
+                color: #fff;
+                font-size: 18px;
+                margin-left: 10px;
+                cursor: pointer;
+            }
+
+            .pre_btn:hover,
+            .copy_btn:hover,
+            .next_btn:hover {
+                background: #1092de;
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            .titleBar {
+                display: flex;
+                width: 100%;
+                height: 80px;
+                justify-content: center;
+                align-items: center;
+                background: #1092de;
+                color: #fff;
+                font-size: 16px;
+                letter-spacing: 1px;
+            }
+
+            .icon-comment {
+                position: absolute;
+                color: #1092de;
+                font-size: 30px;
+                top: 20px;
+                left: 20px;
+            }
+
+            .icon-shetoujiance {
+                color: #fff;
+                font-size: 25px;
+                margin: 0 8px;
+            }
+
+            .mainContentBar {
+                margin-top: 60px;
+                width: 768px;
+                height: 450px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                border-radius: 10px;
+                background: #fff;
+            }
+
+            .mainContent {
+                width: 700px;
+                min-height: 80px;
+                border-bottom: 2px solid #1092de;
+                color: rgb(36, 39, 51);
+                font-size: 16px;
+                font-weight: bold;
+                display: flex;
+                align-items: flex-end;
+                box-sizing: border-box;
+                padding: 15px;
+                letter-spacing: 1px;
+                line-height: 35px;
+            }
+
+            .controlTipsBar {
+                width: 768px;
+                height: 80px;
+                display: flex;
+                align-items: center;
+                flex-wrap: nowrap;
+                box-sizing: border-box;
+                padding: 0 20px;
+            }
+
+            .pre_btn {
+                width: 100px;
+                height: 35px;
+                border-radius: 8px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #1092de;
+                color: #fff;
+                font-size: 16px;
+                margin-right: 8px;
+                cursor: pointer;
+            }
+
+            .copy_btn {
+                width: 100px;
+                height: 35px;
+                border-radius: 8px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #1092de;
+                color: #fff;
+                font-size: 16px;
+                margin: 0 8px;
+                cursor: pointer;
+            }
+
+            .next_btn {
+                width: 100px;
+                height: 35px;
+                border-radius: 8px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #1092de;
+                color: #fff;
+                font-size: 16px;
+                margin-left: 8px;
+                cursor: pointer;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .titleBar {
+                display: flex;
+                width: 100%;
+                height: 55px;
+                justify-content: center;
+                align-items: center;
+                background: #1092de;
+                color: #fff;
+                font-size: 11px;
+                letter-spacing: 1px;
+            }
+
+            .icon-comment {
+                position: absolute;
+                color: #1092de;
+                font-size: 20px;
+                top: 20px;
+                left: 20px;
+            }
+
+            .icon-shetoujiance {
+                color: #fff;
+                font-size: 20px;
+                margin: 0 6px;
+            }
+
+            .mainContentBar {
+                margin-top: 60px;
+                width: 90%;
+                height: 350px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                border-radius: 8px;
+                background: #fff;
+            }
+
+            .mainContent {
+                width: 90%;
+                min-height: 60px;
+                border-bottom: 1.5px solid #1092de;
+                color: rgb(36, 39, 51);
+                font-size: 15px;
+                font-weight: bold;
+                display: flex;
+                align-items: flex-end;
+                box-sizing: border-box;
+                padding: 10px;
+                letter-spacing: 1px;
+                line-height: 30px;
+            }
+
+            .controlTipsBar {
+                width: 90%;
+                height: 60px;
+                box-sizing: border-box;
+                padding: 0 16px;
+            }
+
+            .pre_btn {
+                width: 60px;
+                height: 25px;
+                border-radius: 6px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #1092de;
+                color: #fff;
+                font-size: 14px;
+                margin-right: 6px;
+                cursor: pointer;
+            }
+
+            .copy_btn {
+                width: 60px;
+                height: 25px;
+                border-radius: 6px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #1092de;
+                color: #fff;
+                font-size: 14px;
+                margin: 0 6px;
+                cursor: pointer;
+            }
+
+            .next_btn {
+                width: 60px;
+                height: 25px;
+                border-radius: 6px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #1092de;
+                color: #fff;
+                font-size: 14px;
+                margin-left: 6px;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- main_html here -->
+    <div class="chp_app">
+        <div class="titleBar">
+            <h1 class="title"> 骂人宝典生成器(口吐芬芳) <span class="iconfont icon-shetoujiance"> </span> </span>
+            </h1>
+        </div>
+        <div class="mainContentBar">
+            <span class="iconfont icon-comment"></span>
+            <div class="mainContent"></div>
+        </div>
+        <div class="controlTipsBar">
+            <div class="pre_btn">上一条</div>
+            <div class="copy_btn">复制</div>
+            <div class="next_btn">下一条</div>
+        </div>
+    </div>
+</body>
+
+</html>
+<!-- js here -->
+<script>
+    // add mrktff_global_datas
+    // mrktff_global_datas_Start
+    var mrktff_global_datas = [
+        { "index": "mr1-0", "content": "如果思考是⽣存的证明，我真难判断你是不是⼀具⼫体" }
+        , { "index": "mr1-1", "content": "抢了buff转身就送你雷锋转世？" }
+        , { "index": "mr1-2", "content": "扔块⾁在⼿机上，狗都⽐你会连招。" }
+        , { "index": "mr1-3", "content": "你这杂种肯定是个愚蠢的⼩学⽣" }
+        , { "index": "mr1-4", "content": "⽜顿⽤苹果发现了万有引⼒ 你就是被苹果砸得死⽆全⼫也 还是什么都发现不了" }
+        , { "index": "mr1-5", "content": "你是个孤⼉也不能拿这个当借⼝嗷 懂8？" }
+        , { "index": "mr1-6", "content": "我希望你能做条好狗不要总像得了狂⽝病⼀样到处咬⼈" }
+        , { "index": "mr1-7", "content": "你脑⼦⾥的⽔是为了浇灌你⼼⾥的逼树吗？" }
+        , { "index": "mr1-8", "content": "从⼩妈妈就告诉我，对⼈要怀有善意，后来我遇到了很多⼈，明⽩了不是每⼀个⼈都有妈妈。" }
+        , { "index": "mr1-9", "content": "我没认识你之前，我真没发现原来我有以貌取⼈这⽑病。" }
+        , { "index": "mr1-10", "content": "别跟我说话，我有洁癖。" }
+        , { "index": "mr1-11", "content": "有病你治病，你别找我啊，我⼜不是兽医。" }
+        , { "index": "mr1-12", "content": "天下之⼤，⼤不过你缺的那块⼼眼。" }
+        , { "index": "mr1-13", "content": "和你接触的时间越⻓，我就越喜欢狗，狗永远是狗，⼈有时候不是⼈。" }
+        , { "index": "mr1-14", "content": "要不是⽼师说不让随地扔垃圾，我早就把你扔了。" }
+        , { "index": "mr1-15", "content": "作为失败的典型，你真的是太成功了。" }
+        , { "index": "mr1-16", "content": "拿你当⼈的时候，你尽量装得像点好吗" }
+        , { "index": "mr1-17", "content": "能认识⾃⼰是个什么东⻄，都是好样的。" }
+        , { "index": "mr1-18", "content": "你这个傻13就像南⽅的农作物，⼀年三熟，从来都不带歇⽓⼉的。" }
+        , { "index": "mr1-19", "content": "你信佛吗？为什么不杀⼈？" }
+        , { "index": "mr1-20", "content": "⽼⼦游戏菜 嘴巴⼜不菜 不服对喷啊 傻缺" }
+        , { "index": "mr1-21", "content": "你在野区採灵芝呢？" }
+        , { "index": "mr1-22", "content": "⾃⼰菜的跟个狗⼦⼀样 哪⼉来的b数说别⼈ 菜鸡" }
+        , { "index": "mr1-23", "content": "你⼩时候被猪亲过吧" }
+        , { "index": "mr1-24", "content": "你不是脑⼦不好，就是缺根弦⼉；你⼼脏倒是挺健康的，就是缺个眼⼉。" }
+        , { "index": "mr1-25", "content": "我就不明⽩绳⼦太⻓就会打结，⽽你的⾆头却不能？" }
+        , { "index": "mr1-26", "content": "你的⻓相很提神的说！� (～￣▽￣)～" }
+        , { "index": "mr1-27", "content": "你能讲⽂明，讲素质的时候，我想是我再次投胎做⼈的时候。" }
+        , { "index": "mr1-28", "content": "请你不要⽤你的排泄器官对我说话，这是很不礼貌的，谢谢！" }
+        , { "index": "mr1-29", "content": "2B形容你，⼈家铅笔不乐意！" }
+        , { "index": "mr1-30", "content": "我⽆外乎也就讨厌两种⼈：⼀种是你这样⼉的；还有⼀种是不管你以后变成什么样那样⼉的。" }
+        , { "index": "mr1-31", "content": "你爸妈就该把那⼗分钟⽤来散步(￣▽￣)~*" }
+        , { "index": "mr1-32", "content": "你是我⻅过的容量最⼤的铅笔盒了，装那么多笔你不累吗？" }
+        , { "index": "mr1-33", "content": "你这张脸可成了全球驰名品牌商标了。�" }
+        , { "index": "mr1-34", "content": "你⼲嘛⽤屁股挡住脸啊！�" }
+        , { "index": "mr1-35", "content": "呦！这是谁裤裆⻔没拉，怎么把你漏出来了？" }
+        , { "index": "mr1-36", "content": "你这脸蛋不适合相亲，只适合⾮视频⽹恋。�" }
+        , { "index": "mr1-37", "content": "你的户⼝本就是⼀动物百科" }
+        , { "index": "mr1-38", "content": "你的⼈⽣，总结起来就⼋个字⼉——⽣的荒唐，死的窝囊�" }
+        , { "index": "mr1-39", "content": "⻓的像⼈真的难为你了。" }
+        , { "index": "mr1-40", "content": "去打仗的话⼦弹⻜弹会忍不住向你⻜。�" }
+        , { "index": "mr1-41", "content": "阁下⻓得真是天⽣励志！�" }
+        , { "index": "mr1-42", "content": "您看我像配钥匙的是吧？⾏，您配⼏把？" }
+        , { "index": "mr1-43", "content": "我是算命的。请问您算什么东⻄？" }
+        , { "index": "mr1-44", "content": "刚好，我QQ农场缺条� ，我看你不错今天下午就来上班吧" }
+        , { "index": "mr1-45", "content": "东边不亮⻄边亮，憨批啥样你啥样" }
+        , { "index": "mr1-46", "content": "东边不亮⻄边亮，你爹啥样我啥样" }
+        , { "index": "mr1-47", "content": "你是不是打多了王者荣耀，脑⼦⾥也有⼀个王者峡⾕，深不⻅底？" }
+        , { "index": "mr1-48", "content": "我愿⽤你的双寿换好⼈⼀⽣平安" }
+        , { "index": "mr1-49", "content": "我们⼈多有钱就⾜够了，哪像你们，穷的出殡都得集资" }
+        , { "index": "mr1-50", "content": "掀起你的头盖⻣，让我来看看⾥⾯的⽔" }
+        , { "index": "mr1-51", "content": "我是运⽓多好出⻔竟然踩了个你" }
+        , { "index": "mr1-52", "content": "你到底是个什么杂交品种，脑仁⼉竟然还没⽠⼦⼤" }
+        , { "index": "mr1-53", "content": "返祖现象在你身上贯彻的很彻底嘛，尤其是脑⼦" }
+        , { "index": "mr1-54", "content": "冲⼲净你脑⼦⾥的屎再和我说话，啥你问哪有⽔？你脑⼦⾥不有的是⽔吗" }
+        , { "index": "mr1-55", "content": "你到底是个什么品种的泥鳅，竟然专⻔往屎⾥钻" }
+        , { "index": "mr1-56", "content": "你昨天是不是吃的屎壳郎啊，要不怎么满嘴喷粪" }
+        , { "index": "mr1-57", "content": "你是不是消化系统装反了，不然怎么嘴⾥喷粪呢" }
+        , { "index": "mr1-58", "content": "1千⽶=1000⽶=10000分⽶=100000厘⽶=1000000毫⽶，⽽我=你爹" }
+        , { "index": "mr1-59", "content": "只希望你吃饭有⼈喂 ⾛路有⼈推 夜夜缠绵于病却⻓命百岁 不能⽣育却⼉孙满堂 寿⽐昙花福如⺟猪" }
+        , { "index": "mr1-60", "content": "⽅便的话,您能去死⼀下吗？" }
+        , { "index": "mr1-61", "content": "你说话咋这么臭呢？嘴⾥⻓痔疮了？" }
+        , { "index": "mr1-62", "content": "嚯嚯嚯，傻逼拉稀做⾯膜。有⼈问，你嘴怎么也这么臭。傻逼说，这⾯膜味道可真不错。" }
+        , { "index": "mr1-63", "content": "你没事⼉跟我⽐⽐啥呢，我⼜不是吕洞宾" }
+        , { "index": "mr1-64", "content": "你在你家厕所没吃饱吗" }
+        , { "index": "mr1-65", "content": "傻逼今天上厕所，拉了⼀坨屎，嘿，简直就像照镜⼦，这屎可真像你。" }
+        , { "index": "mr1-66", "content": "你出⽣的时候是不是把脑⼦扔了，把胎盘塞脑壳⾥养⼤了" }
+        , { "index": "mr1-67", "content": "以前只知道厕所能被屎堵了，今天竟然看⻅有⼈脑⼦被屎堵了" }
+        , { "index": "mr1-68", "content": "你出⽣的时候是不是被扔起来三次，被接住了两次？" }
+        , { "index": "mr1-69", "content": "没想到你的不要脸学位都修到博⼠后了" }
+        , { "index": "mr1-70", "content": "贱⼈永远是贱⼈，就算通货膨胀了你也值不了⼀个⽠⼦⼉" }
+        , { "index": "mr1-71", "content": "这么多年了，你妈天天喂你吃屎挺不容易的吧" }
+        , { "index": "mr1-72", "content": "你是不是掉过粪坑⾥，脖⼦以上全截肢了？" }
+        , { "index": "mr1-73", "content": "傻逼年年有，今年⼤丰收" }
+        , { "index": "mr1-74", "content": "最近猪⾁涨价国家投放存⾁进⼊市场，我握住你⺟亲的⼿感谢你为国捐躯，只是可惜你的检疫没有合格，主要问题出在脑⼦。" }
+        , { "index": "mr1-75", "content": "最近猪⾁涨价国家投放存⾁进⼊市场，我握住你⺟亲的⼿感谢你为国捐躯，只是可惜你的检疫没有合格，主要问题出在脑⼦。" }
+        , { "index": "mr1-76", "content": "你妈的灵⻋侧翻到猪圈⾥把猪压死了 猪⾁⼜涨了" }
+        , { "index": "mr1-77", "content": "我留你狗命是因为我想保护动物毕竟你做只狗不容易" }
+        , { "index": "mr1-78", "content": "你⾃拍⼀张就是你的全家福" }
+        , { "index": "mr1-79", "content": "昨天⽕葬场给我打电话说你妈粘锅了" }
+        , { "index": "mr1-80", "content": "为什么不理我 是想让我变成狗不理吗" }
+        , { "index": "mr1-81", "content": "我是你爸 千变万化" }
+        , { "index": "mr1-82", "content": "鸡就是鸡，五颜六⾊还是鸡。" }
+        , { "index": "mr1-83", "content": "猪只有⾁，没有⼼。" }
+        , { "index": "mr1-84", "content": "尘归尘，⼟归⼟，把你⻣灰扬了都不配做PM2.5" }
+        , { "index": "mr1-85", "content": "你脖⼦上顶着的是个肿瘤吗" }
+        , { "index": "mr1-86", "content": "敦煌来的？壁画那么多！" }
+        , { "index": "mr1-87", "content": "你的出⽣是杜蕾斯的⼀封道歉信" }
+        , { "index": "mr1-88", "content": "今天想骂⼈ 所以不骂你" }
+        , { "index": "mr1-89", "content": "你看上去好眼熟 像我昨天扔出去的那袋垃圾" }
+        , { "index": "mr1-90", "content": "你⼀张⾃拍就是全家福" }
+        , { "index": "mr1-91", "content": "你爸妈真会⽣ 好的东⻄都⾃⼰留着" }
+        , { "index": "mr1-92", "content": "垃圾都有家，你却没有。" }
+        , { "index": "mr1-93", "content": "但凡你爸妈当年多唠嗑⼀分钟 今天也就少了个要分类的垃圾" }
+        , { "index": "mr1-94", "content": "你是莎⼠⽐亚没有⼠" }
+        , { "index": "mr1-95", "content": "你什么牌的塑料袋 这么能装呢？" }
+        , { "index": "mr1-96", "content": "⻓亭外 古道边 芳草天" }
+        , { "index": "mr1-97", "content": "你的嘴简直能给农⽥施肥" }
+        , { "index": "mr1-98", "content": "嘴巴如果闲得慌 不如去公共厕所挨个把⻢桶舔⼲净 做个⼈⼈称赞的好东⻄" }
+        , { "index": "mr1-99", "content": "这么喜欢装逼 下辈⼦当条内裤好了" }
+        , { "index": "mr1-100", "content": "⻓城要是⽤你脸⽪做的 孟姜⼥能哭倒才怪" }
+        , { "index": "mr1-101", "content": "上帝把智慧洒满⼈间 唯独你撑了把伞" }
+        , { "index": "mr1-102", "content": "你在数字界和字⺟界排⾏第⼆" }
+        , { "index": "mr1-103", "content": "你爸今晚连夜庭院种枇杷" }
+        , { "index": "mr1-104", "content": "你男朋友关注pua 你⼥朋友关注咪蒙 你爸关注罗辑思维 你妈关注果⼦狸7777 你关注地域⿊bot 你们都是有光明未来的⼀家⼦⼈上⼈" }
+        , { "index": "mr1-105", "content": "天⼯造物不测，怎么造出你这么个东⻄" }
+        , { "index": "mr1-106", "content": "说你蠢，你还真把⾃⼰当猪" }
+        , { "index": "mr1-107", "content": "我⼀定会拿意⼤利农加炮 把你脑抽抽的地⽅炸出⼀朵朵屎花" }
+
+    ];
+    // mrktff_global_datas_End
+
+    // 延时函数 delay
+    function delay(ms) {
+        return new Promise((resolve, reject) => {
+            var timeOut = setTimeout(() => { clearTimeout(timeOut); resolve(0) }, ms);
+        });
+    };
+    // global_datas 全局数据
+    // var mrktff_global_datas;
+
+    // cusTomerData_list 用户点击的数据集合
+    var cusTomerData_list = [];
+    // cusTapsCount 用户连续点击上一条的次数
+    var cusTapsCount = 0;
+    // tips 提示框
+    function cusTomerTips(tipsText) {
+        var the_tips = tipsText;
+        return new Promise(async (resolve, reject) => {
+            // show mask
+            var mask = document.createElement("div");
+            mask.style.position = "fixed";
+            mask.style.top = 0;
+            mask.style.left = 0;
+            mask.style.display = "flex";
+            mask.style.zIndex = 999;
+            mask.style.width = "100vw";
+            mask.style.height = "100vh";
+            mask.className = "mask";
+            document.body.appendChild(mask);
+            document.querySelector(".mask").addEventListener("click", () => { return; });
+            // mask 里面在套一层 
+            var maskInnerDiv = document.createElement("div");
+            maskInnerDiv.style.width = "100%";
+            maskInnerDiv.style.height = "100%";
+            maskInnerDiv.style.display = "flex";
+            maskInnerDiv.style.justifyContent = "center";
+            maskInnerDiv.style.alignItems = "center";
+            maskInnerDiv.style.position = "relative";
+            maskInnerDiv.className = "maskInnerDiv";
+            mask.style.zIndex = 1000;
+            mask.appendChild(maskInnerDiv);
+            document.querySelector(".maskInnerDiv").addEventListener("click", () => { return; });
+            // tips
+            var tips = document.createElement("div");
+            if (document.body.clientWidth >= 800) {
+                var tips = document.createElement("div");
+                tips.style.width = "600px";
+                tips.style.height = "40px";
+                tips.style.background = "#fd6f0b";
+                tips.style.color = "#fff";
+                tips.style.borderRadius = "8px";
+                tips.style.display = "flex";
+                tips.style.justifyContent = "center";
+                tips.style.alignItems = "center";
+                tips.style.position = "absolute";
+                tips.style.top = "-40px";
+                tips.style.fontSize = "16px";
+                tips.innerText = the_tips;
+                tips.className = "tipsAnimationWindowsShow";
+                maskInnerDiv.appendChild(tips);
+                await delay(1500);
+                tips.className = "tipsAnimationWindowsHide";
+                await delay(500);
+                document.body.removeChild(mask);
+            } else {
+                var tips = document.createElement("div");
+                tips.style.width = "90%";
+                tips.style.height = "30px";
+                tips.style.background = "#fd6f0b";
+                tips.style.color = "#fff";
+                tips.style.borderRadius = "6px";
+                tips.style.display = "flex";
+                tips.style.justifyContent = "center";
+                tips.style.alignItems = "center";
+                tips.style.position = "absolute";
+                tips.style.top = "-30px";
+                tips.style.fontSize = "14px";
+                tips.innerText = the_tips;
+                tips.className = "tipsAnimationAppShow";
+                maskInnerDiv.appendChild(tips);
+                await delay(1500);
+                tips.className = "tipsAnimationAppHide";
+                await delay(500);
+                document.body.removeChild(mask);
+            };
+
+            // removeChild
+            resolve(0);
+        });
+    };
+    // request datas
+    // 封装一下 request
+    function zimore_request(owner, repo, path) {
+        var owner = owner;
+        var repo = repo;
+        var path = path;
+        return new Promise(async (resolve, reject) => {
+            var datas = await fetch(`https://gitee.com/api/v5/repos/${owner}/${repo}/contents/${path}?access_token=a538b511513d6465abdcec33fc41a83c`, {
+                headers: {
+                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36'
+                },
+            }).then(res => { return res.json() });
+            var str = atob(datas.content); // 得到的数据先 atob
+            var newStr = escape(str);  // 然后 escape
+            newStr = decodeURIComponent(newStr); // 最后 decodeURIComponent
+            //  console.log(newStr);  // 得到的 type 是 string
+            var newStrArray = newStr.split("\n");
+            resolve(newStrArray);
+        });
+    };
+    // 获取数据 getDatas
+    function getDatas() {
+        return new Promise(async (resolve, reject) => {
+            mrktff_global_datas = await zimore_request("zhong-zimo", "generator_data", "mrktff.json");
+            localStorage.setItem("mrktff_global_datas", JSON.stringify(mrktff_global_datas));
+            resolve(0)
+        });
+    };
+    // 初始化 init
+    async function init() {
+        var randomIndex = Math.floor(Math.random() * mrktff_global_datas.length);
+        document.querySelector(".mainContent").innerText = mrktff_global_datas[randomIndex]["content"];
+        // global datas
+        // mrktff_global_datas = localStorage.getItem("mrktff_global_datas");
+        // document.querySelector(".chp_app").style.display = "none";
+        // if (mrktff_global_datas && mrktff_global_datas.length > 0) {
+        //   console.log("本地有了");
+        //   mrktff_global_datas = JSON.parse(localStorage.getItem("mrktff_global_datas"));
+        //   document.querySelector(".chp_app").style.display = "flex";
+        //   var randomIndex = Math.floor(Math.random() * mrktff_global_datas.length);
+        //   document.querySelector(".mainContent").innerText = JSON.parse(mrktff_global_datas[randomIndex])["content"];
+        // } else {
+        //   console.log("本地没有");
+        //   await getDatas();
+        //   document.querySelector(".chp_app").style.display = "flex";
+        //   var randomIndex = Math.floor(Math.random() * mrktff_global_datas.length);
+        //   document.querySelector(".mainContent").innerText = JSON.parse(mrktff_global_datas[randomIndex])["content"];
+        // };
+        // pre_btn 点击事件
+        document.querySelector(".pre_btn").addEventListener("click", async () => {
+            if (!cusTomerData_list || cusTomerData_list.length <= 0) {
+                return;
+            } else {
+                if ((cusTomerData_list.length - 1 - cusTapsCount) < 0) {
+                    await cusTomerTips("到顶了哦!");
+                    return;
+                };
+                document.querySelector(".mainContent").innerText = cusTomerData_list[cusTomerData_list.length - 1 - cusTapsCount];
+                cusTapsCount++;
+            };
+        });
+        // copy_btn 点击事件
+        document.querySelector(".copy_btn").addEventListener("click", async () => {
+            var input = document.createElement('input');
+            document.body.appendChild(input);
+            input.value = document.querySelector(".mainContent").innerText;
+            input.select();
+            document.execCommand("Copy");
+            document.body.removeChild(input);
+            await cusTomerTips("已复制");
+        });
+        // next_btn 点击事件
+        document.querySelector(".next_btn").addEventListener("click", () => {
+            cusTapsCount = 0;
+            var current_chp = document.querySelector(".mainContent").innerText;
+            cusTomerData_list.push(current_chp);
+            var randomIndex = Math.floor(Math.random() * mrktff_global_datas.length);
+            document.querySelector(".mainContent").innerText = mrktff_global_datas[randomIndex]["content"];
+        });
+    };
+    init();
+
+</script>

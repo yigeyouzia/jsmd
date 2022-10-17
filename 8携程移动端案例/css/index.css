@@ -1,0 +1,363 @@
+/* 移动端必写  页面居中  自动适应宽度  字体 */
+body {
+    max-width: 540px;
+    min-width: 320px;
+    margin: 0 auto;
+    font: normal 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
+    color: #000;
+    background: #f2f2f2;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    height: 2000px;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 搜索模块 */
+.search-index {
+    /* 固定定位跟父级没有关系  以屏幕为准 */
+    display: flex;
+    position: fixed;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 44px;
+    min-width: 320px;
+    max-width: 540px;
+    /* 大盒子背景边框 */
+    background-color: #F6F6F6;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.search {
+    position: relative;
+    flex: 1;
+    height: 26px;
+    line-height: 24px;
+    border: 1px solid #ccc;
+    margin: 7px 10px;
+    font-size: 12px;
+    color: #666;
+    border-radius: 5px;
+    text-indent: 25px;
+    /* 盒子影子 */
+    /* 水平0 垂直2 模糊4  */
+    box-shadow: 0 2px 4px rgb(0, 0, 0, .2);
+}
+
+.search::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 15px;
+    height: 15px;
+    background: url(../images/sprite.png) no-repeat -59px -279px;
+    background-size: 104px auto;
+}
+
+
+.user {
+    width: 44px;
+    height: 44px;
+    font-size: 12px;
+    text-align: center;
+    color: #2eaae0;
+}
+
+.user::before {
+    content: '';
+    display: block;
+    /*1.先把精灵图缩小  量出长宽 和 坐标 */
+    width: 23px;
+    height: 23px;
+    background: url(../images/sprite.png) no-repeat -59px -194px;
+    /* 2.缩放一半  高度auto */
+    background-size: 104px auto;
+    /* 居中 */
+    /* -2 让文字不与边框重合 */
+    margin: 4px auto -2px;
+}
+
+
+/* 焦点图 */
+.focus {
+    position: relative;
+    padding-top: 46px;
+    /* 溢出隐藏 */
+    overflow: hidden;
+}
+
+.focus ul {
+    /* 清除浮动 */
+    overflow: hidden;
+    width: 500%;
+}
+
+.focus ul li {
+    float: left;
+    width: 20%;
+}
+
+.focus ol {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    margin: 0;
+}
+
+.focus ol li {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: #fff;
+    list-style: none;
+    border-radius: 2px;
+    transition: all .3s;
+}
+
+/* .current {
+    width: 15px;
+} */
+
+.focus ol li.current {
+    width: 15px;
+}
+
+.focus img {
+    /* 显示第一张图 */
+    margin-left: -100%;
+    width: 100%;
+}
+
+/* 局部导航栏 */
+.local-nav {
+    display: flex;
+    margin: 3px 4px;
+    height: 64px;
+    background-color: #fff;
+    border: 8px;
+}
+
+.local-nav li {
+    flex: 1;
+}
+
+/* 上面图片下面文字做法 */
+.local-nav a {
+    display: flex;
+    /* 主轴设成y  侧轴居中 */
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+}
+
+.local-nav li [class^="local-nav-icon"] {
+    width: 32px;
+    height: 32px;
+    margin-top: 8px;
+    background: url(../images/localnav_bg.png) no-repeat 0 0;
+    background-size: 32px auto;
+}
+
+.local-nav li .local-nav-icon-icon2 {
+    background-position: 0 -32px;
+}
+
+.local-nav li .local-nav-icon-icon3 {
+    background-position: 0 -64px;
+}
+
+.local-nav li .local-nav-icon-icon4 {
+    background-position: 0 -96px;
+}
+
+.local-nav li .local-nav-icon-icon5 {
+    background-position: 0 -128px;
+}
+
+/* nav */
+nav {
+    border-radius: 8px;
+    margin: 0 4px 3px;
+    /* 显示圆角 */
+    overflow: hidden;
+}
+
+.nav-common {
+    display: flex;
+    height: 88px;
+    background-color: pink;
+}
+
+.nav-common:nth-child(2) {
+    margin: 3px 0;
+}
+
+.nav-items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.nav-items a {
+    flex: 1;
+    text-align: center;
+    line-height: 44px;
+    color: #fff;
+    font-size: 14px;
+    /* 文字阴影 */
+    text-shadow: 1px 1px rgba(0, 0, 0, .2);
+}
+
+.nav-items a:nth-child(1) {
+    border-bottom: 1px solid #fff;
+}
+
+.nav-items:nth-child(1) a {
+    /* 第一个大盒子无底边 */
+    border: 0;
+    background: url(../images/hotel.png) no-repeat bottom center;
+    background-size: 121px auto;
+}
+
+.nav-items:nth-child(-n+2) {
+    border-right: 1px solid #fff;
+}
+
+/* 渐变色 */
+.nav-common:nth-child(1) {
+    background: -webkit-linear-gradient(left, #FA5A55, #FA994D);
+}
+
+.nav-common:nth-child(2) {
+    background: -webkit-linear-gradient(left, #4B90ED, #53BCED);
+}
+
+.nav-common:nth-child(3) {
+    background: -webkit-linear-gradient(left, #34C2A9, #6CD559);
+}
+
+/* subnavv-entry */
+.subnavv-entry {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    margin: 0 4px;
+    flex-wrap: wrap;
+    padding: 5px 0;
+    box-shadow: 0 5px 5px rgb(0, 0, 0, .2);
+}
+
+.subnavv-entry li {
+    /* 里面可以写% 相对于父亲 */
+    flex: 20%;
+}
+
+.subnavv-entry a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subnavv-entry li [class^="subnavv-entry-icon"] {
+    width: 28px;
+    height: 28px;
+    background-color: pink;
+    margin-top: 4px;
+    background: url(../images/subnav-bg.png) no-repeat;
+    background-size: 28px auto;
+}
+
+.subnavv-entry li .subnavv-entry-icon-icon2 {
+    background-position: 0 -28px;
+}
+
+.sales-box {
+    margin: 4px;
+    background-color: #fff;
+    border-top: 1px solid #bbb;
+}
+
+.sales-hd {
+    position: relative;
+    height: 44px;
+    border-bottom: 1px solid #ccc;
+}
+
+.sales-hd h2 {
+    position: relative;
+    text-indent: -999px;
+    overflow: hidden;
+}
+
+.sales-hd h2::after {
+    position: absolute;
+    left: 20px;
+    top: 8px;
+    content: '';
+    display: block;
+    width: 79px;
+    height: 15px;
+    background: url(../images/hot.png) no-repeat 0 -20px;
+    background-size: 79px auto;
+}
+
+.more {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    display: block;
+    padding: 3px 20px 3px 10px;
+    border-radius: 15px;
+    background: -webkit-linear-gradient(left, #FF506C, #FF6bC6);
+    color: #fff;
+}
+
+/* 三角做法  上右边框加旋转 */
+.more::after {
+    content: '';
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    width: 7px;
+    height: 7px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(45deg);
+}
+
+.row {
+    display: flex;
+}
+
+.row a {
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+.row a:nth-child(1) {
+    border-right: 1px solid #ccc;
+}
+
+.row a img {
+    width: 100%;
+}

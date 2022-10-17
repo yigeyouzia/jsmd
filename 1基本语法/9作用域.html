@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.全局变量
+        // 在 HTML 中，全局作用域是 window。所有全局变量均属于 window 对象  
+        // "use strict"
+        var quanju1 = 10;
+        console.log(quanju1);
+        function fn() {
+            console.log(quanju1);
+            // 函数内部直接赋值未定义  当做自动全局
+            quanju2 = 20;
+        }
+        fn();
+        console.log(quanju2);
+
+    </script>
+</body>
+
+</html>

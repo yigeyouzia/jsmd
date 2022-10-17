@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="../login.html" title="都挺好"></a>
+    <input type="checkbox" name="" id="" checked>
+    <div index="1" data-index="2">我是div 1是我自定义的属性</div>
+    <span>123</span>
+    <script>
+        $(function () {
+            // 一 固有属性
+            // 1.element.prop("属性名")  获取属性值
+            console.log($("a").prop("href"));
+            // 2.修改值
+            $("a").prop("title", "我们都挺好");
+            // 3.
+            $("input").change(function () {
+                console.log($(this).prop("checked"));
+            })
+            // 二  自定义属性  attr
+            console.log($("div").attr("index"));
+            // 修改
+            $("div").attr("data-index", 200);
+            // 三.  数据缓存 data() 里面的数据放在元素的内存里面
+            // 1.存数据 键值对
+            $("span").data("uname", "andy");
+            console.log($("span").data("uname"));
+            // 2.data 获取自定义属性不加data 直接index获取是数字型
+            console.log($("div").data("index"));   //200    
+        })
+    </script>
+</body>
+
+</html>

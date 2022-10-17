@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        var div = document.querySelector('div');
+        div.addEventListener('touchstart', function (e) {
+            console.log(e);
+            // 1.touches 正在触摸屏幕的所有手指列表
+            // 2.targetTouches 正在触摸当前DOM元素手指列表
+            // 如果侦听的一个DOM元素 二者相同
+            // 3.changedTouches 手指状态发生改变列表 从无到有 或者从有到无
+            // 一般用第二个
+            console.log(e.targetTouches[0]);
+            console.log(e.targetTouches[0]);
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // onload  等页面完全加载完后执行
+        window.onload = function () {
+            var btn = document.querySelector('button');
+            btn.addEventListener("click", function () {
+                alert("111");
+            })
+        }
+        window.onload = function () {
+            var btn = document.querySelector('button');
+            btn.addEventListener("click", function () {
+                alert("222");
+            })
+        }
+        window.addEventListener('load', function () {
+            var btn = document.querySelector('button');
+            btn.addEventListener("click", function () {
+                alert("监听可以写多个");
+            })
+        })
+        // DOMContentLoaded 只在dom加载后执行js
+        document.addEventListener('DOMContentLoaded', function () {
+            alert('DOMContentLoaded 只在dom加载后执行js')
+        })
+
+    </script>
+    <button>按钮</button>
+</body>
+
+</html>

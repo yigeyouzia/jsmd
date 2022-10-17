@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.字符串嵌套  内双外单  或 内单外双
+        var str = "我是\n'cyt'";
+        console.log(str);
+        //2.字符串长度length
+        console.log(str.length);
+        //3.字符串拼接
+        console.log("沙漠" + "骆驼");
+        //4.查找
+        // search() 方法无法设置第二个开始位置参数。
+        // indexOf() 方法无法设置更强大的搜索值（正则表达式).
+        {
+            var str = "The full name of China is the People's Republic of China.";
+            var pos = str.indexOf("China");
+            console.log(pos, 1);   //17
+            var pos = str.lastIndexOf("China");
+            console.log(pos);   //51
+            var pos = str.search("China");
+            console.log(pos);   //17
+        }
+        //5.提取子串   左闭右开  省略第二个参数 全部截取
+        {
+            var str = "Apple, Banana, Mango";
+            // 1
+            var res = str.slice(7, 13);
+            console.log(res);   //Banana
+            var res = str.slice(-13, -7);
+            console.log(res);   //Banana
+            // 2
+            var str = "Apple, Banana, Mango";
+            var res = str.substr(7, 6);   //6为长度
+        }
+
+
+        //案例
+        // var age = prompt('请输入年龄：');
+        // var str = '您今年' + age + '岁了!';
+        // alert(str);
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>显示当前系统事件</button>
+    <div>某个时间</div>
+    <p class="p1"></p>
+    <p class="p1"></p>
+    <p id="p2">
+        123
+        <span>ff</span>
+    </p>
+    <script>
+        function getDate() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var dates = date.getDate();
+            var day = date.getDay();
+            var arr = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            return ('今天是: ' + year + '年' + month + '月' + dates + '日' + arr[day]);
+        }
+        // 当我们点击按钮 div显示时间
+        // 1.获取元素
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        // 2.注册事件
+        btn.onmouseover = function () {
+            div.innerText = getDate();
+        }
+
+        // 3.innerText 和 innerHml区别
+        var p1 = document.getElementsByClassName('p1');
+        var p2 = document.getElementsByClassName('p2');
+        // innerText 不识别html标签
+        p1[0].innerText = '<strong>今天是：</strong> 2019';
+        // innerHTML识别html标签
+        p1[1].innerHTML = '<strong>今天是：</strong> 2019';
+        // 这两个属性都是可以读写的  可以获取元素里面的内容
+        console.log(document.getElementById('p2').innerText);  //不换行  无标签
+        console.log(document.getElementById('p2').innerHTML);  //换行 有标签
+    </script>
+</body>
+
+</html>

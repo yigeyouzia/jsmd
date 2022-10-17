@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        .box {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 100px;
+            width: 300px;
+            height: 40px;
+            border: 3px solid salmon;
+        }
+
+        .item {
+            position: relative;
+            left: 10px;
+            top: 10px;
+            display: flex;
+            flex-direction: row;
+            width: 80px;
+            height: 20px;
+            /* border: 1px solid #ccc; */
+            box-shadow: 1px 3px rgb(0, 0, 0, .5);
+            overflow: hidden;
+        }
+
+        .price {
+            position: relative;
+            right: 10px;
+            top: -10px;
+            float: right;
+            border: 2px solid cornflowerblue;
+        }
+
+        .item:hover {
+            transform: scale(1.1);
+        }
+
+        .item span {
+            flex: 1;
+            border: 1px solid #666;
+            text-align: center;
+            line-height: 100%;
+        }
+
+        .increment:hover,
+        .decrement:hover {
+            background-color: darkcyan;
+            color: red;
+        }
+
+        /* 将input修改为行内块元素 才能使用flex布局 */
+        input {
+            display: inline-block;
+            text-align: center;
+            width: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="item">
+            <span class="decrement">-</span>
+            <input type="text" value="1" class="itxt">
+            <span class="increment">+</span>
+        </div>
+        <div class="price">￥12.60</div>
+    </div>
+
+    <script>
+        var price = $(".price").html().substr(1);
+        $(function () {
+            $(".increment").click(function () {
+                // 1.得到当前文本框商品数量
+                var n = $(this).siblings(".itxt").val();
+                n++;
+                console.log(n);
+                $(this).siblings(".itxt").val(n);
+                // 2.修改价格
+                // 当前商品单价
+                // var price = $(this).parents(".item").siblings(".price").html();
+                console.log(price);
+                $(this).parents(".item").siblings(".price").html("￥" + (price * n).toFixed(2));
+            })
+            $(".decrement").click(function () {
+                var n = $(this).siblings(".itxt").val();
+                if (n > 0) {
+                    n--;
+                    console.log(n);
+                    $(this).siblings(".itxt").val(n)
+                } else
+                    alert("不能为负数");
+                // 2.修改价格
+                $(this).parents(".item").siblings(".price").html("￥" + (price * n).toFixed(2));
+            })
+            // 3.用户修改值  改变价格数据
+            $(".itxt").change(function () {
+                var n = $(this).val();
+                if (n >= 0) {
+                    $(this).parents(".item").siblings(".price").html("￥" + price * n);
+                }
+            })
+        })
+    </script>
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 9999; pointer-events: none;"></canvas>
+    <script src="https://cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="https://script-1256884783.file.myqcloud.com/cursor/explosion.min.js"></script>
+    <!-- 樱花 -->
+    <script async src="https://portb.kbai.cc/hexo&kbai/sakura.js"></script>
+    <script async src="https://portb.kbai.cc/hexo&kbai/sbhuadong.js"></script>
+    <link rel="stylesheet" href="https://portb.kbai.cc/hexo&kbai/mousezhizhen.css" />
+    <!-- 指针轨迹 -->
+</body>
+
+</html>

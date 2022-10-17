@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <input type="text" value="请输入内容" name="" id="">
+    <script>
+        var btn = document.querySelector('button');
+        var input = document.querySelector('input');
+        btn.onclick = function (e) {
+            // input.innerHTML = '点击了';  普通盒子如div这样做
+            input.value = '点击了';
+            // 如果想要禁用某个表单  disabled
+            btn.disabled = true;
+            // this.disabled = true 指向当前函数调用者对象
+        }
+    </script>
+</body>
+
+</html>

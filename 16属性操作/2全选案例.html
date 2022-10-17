@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="checkbox" name="" id="" class="checkall"> 全选
+    <input type="checkbox" name="" id="" class="item"> 1
+    <input type="checkbox" name="" id="" class="item"> 2
+    <input type="checkbox" name="" id="" class="item"> 3
+    <input type="checkbox" name="" id="" class="checkall"> 全选
+
+    <script>
+        $(function () {
+            $(".checkall").change(function () {
+                // 1.点击全选  1 2 3 跟着选
+                //   .checkall  后面的全选框跟着变
+                $(".item ,.checkall").prop("checked", $(this).prop("checked"));
+                // 2.如果 1 2 3 都选上 全选框选上
+            });
+
+            $(".item").change(function () {
+                console.log($(".item:checked").length);
+                if ($(".item:checked").length === $(".item").length) {
+                    $(".checkall").prop("checked", true)
+                } else {
+                    $(".checkall").prop("checked", false)
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

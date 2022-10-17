@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 从1970-1-1 到现在过了多少毫秒
+        var date = new Date();
+        console.log(date.valueOf());
+        console.log(date.getTime());
+        //简单写法
+        var date1 = +new Date();  //+new Date()返回时间戳   
+        console.log(date1);
+        //更简单写法  H5写法
+        console.log(Date.now());
+    </script>
+</body>
+
+</html>

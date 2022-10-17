@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.转换为字符串
+        var num = 10;
+        var str = num.toString();   //1
+        console.log(str);
+        console.log(typeof str);   //string
+        console.log(String(10));    //2
+        console.log(10 + '');     //3**
+        //2. 转换为数字
+        var age = prompt('请输入年龄：')
+        console.log(parseInt(age));    //1 整型
+        console.log(parseInt(3.14));
+        console.log(parseInt('120px'));  //2.取前面120
+        console.log(parseFloat('3.14'));  //小数3.14
+        console.log(Number('12.23'));   // 3.强制转换 
+        console.log('12' - 0);    //4.隐式转换
+        //3.转换为boolean  ''  0  NaN null undefined  为false
+        console.log(Boolean(''));
+
+
+    </script>
+</body>
+
+</html>

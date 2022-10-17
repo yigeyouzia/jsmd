@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+    </ul>
+    <script>
+        var ul = document.querySelector('ul');
+        document.addEventListener('click', function (e) {
+            console.log(e);
+            // 1.坐标 clientX  返回相对于可视区坐标
+            console.log(e.clientX);
+            console.log(e.clientY);
+            console.log('-----------------');
+
+            var li = document.createElement('li');
+            li.innerHTML = e.clientX + ' ' + e.clientY;
+            ul.appendChild(li);
+            // 2.pageX   返回相对于文档页的距离
+            console.log(e.pageX);
+            console.log(e.pageY);
+            console.log('-----------------');
+            // 3.screenX 距离电脑屏幕距离
+        })
+    </script>
+</body>
+
+</html>

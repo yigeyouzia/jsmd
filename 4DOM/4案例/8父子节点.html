@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>我是1</li>
+        <li>我是2</li>
+        <li>我是3</li>
+        <li>我是4</li>
+    </ul>
+    <div class="box">
+        <div class="erweima"></div>
+    </div>
+    <script>
+        // 1. 父节点  parentNode
+        var erweima = document.querySelector('.erweima');
+        // 得到的离得最近的父节点
+        console.log(erweima.parentNode);
+        // 2.子节点  childNodes
+        var ul = document.querySelector('ul');
+        console.log(ul.childNodes);  //text 文本结点
+        console.log(ul.childNodes[0].nodeType);  //3
+        console.log(ul.childNodes[1].nodeType);  //1
+        // 3.只获取儿子li  children
+        console.log(ul.children);
+        // 4.第一个 最后一个li
+        console.log(ul.firstChild);  //#text 不用
+        console.log(ul.firstElementChild);  //li
+        console.log(ul.lastElementChild);  //li
+        // 实际开发  兼容
+        console.log(ul.children[0]);
+        console.log(ul.children[3]);
+        console.log(ul.children[ul.children.length - 1]);
+    </script>
+</body>
+
+</html>

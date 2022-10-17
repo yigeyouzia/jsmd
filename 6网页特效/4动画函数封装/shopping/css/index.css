@@ -1,0 +1,251 @@
+.main {
+    width: 980px;
+    height: 455px;
+    margin-left: 220px;
+    margin-top: 10px;
+}
+
+.focus {
+    overflow: hidden;
+    position: relative;
+    float: left;
+    width: 720px;
+    height: 100%;
+}
+
+.focus ul {
+    position: absolute;
+    width: 666%;
+}
+
+.focus ul li {
+    float: left;
+}
+
+.arrow-l,
+.arrow-r {
+    display: none;
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    width: 24px;
+    height: 40px;
+    background: rgba(0, 0, 0, .3);
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-family: 'icomoon';
+    font-size: 18px;
+    z-index: 3;
+}
+
+.current {
+    background-color: rgb(245, 163, 12);
+}
+
+.arrow-r {
+    right: 0;
+}
+
+.circle {
+    position: absolute;
+    left: 50px;
+    bottom: 10px;
+}
+
+.circle li {
+    float: left;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+
+.main .newsflash {
+    float: right;
+    width: 250px;
+    height: 100%;
+}
+
+.news {
+    line-height: 34px;
+    border: 1px solid #e4e4e4;
+    /* padding: 0 15px; */
+}
+
+.news .news-hd {
+    height: 34px;
+    border-bottom: 1px dotted #e4e4e4;
+}
+
+.news-hd h5 {
+    float: left;
+    text-align: center;
+    padding-left: 15px;
+}
+
+.news-hd a {
+    float: right;
+    text-align: center;
+    padding-right: 15px;
+}
+
+.news-bd {
+    padding: 5px 10px 0;
+}
+
+.news-hd a::after {
+    content: '\e920';
+    font-family: 'icomoon';
+}
+
+.news-bd ul li {
+    /* 强制一行内显示 */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    float: left;
+    height: 24px;
+    line-height: 24px;
+}
+
+.newsflash .news {
+    height: 166px;
+    background-color: #ffffff;
+}
+
+.newsflash .lifeservice {
+    height: 209px;
+    border: 1px solid #e4e4e4;
+    border-top: 0;
+    overflow: hidden;
+}
+
+.lifeservice ul {
+    /* 63*4 */
+    /* li太多挤下去  父亲ul设置宽 */
+    width: 252px;
+}
+
+.lifeservice ul li {
+    float: left;
+    width: 63px;
+    height: 71px;
+    border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    text-align: center;
+}
+
+.lifeservice ul li i {
+    display: inline-block;
+    width: 24px;
+    height: 28px;
+    margin-top: 12px;
+    background: url(../images/icons.png) no-repeat -19px -15px;
+}
+
+.newsflash .bargin {
+    margin-top: 5px;
+    height: 74px;
+}
+
+.recom {
+    height: 163px;
+    margin-top: 12px;
+}
+
+.recom_hd {
+    float: left;
+    width: 205px;
+    height: 163px;
+}
+
+.recom_bd {
+    float: right;
+}
+
+.recom_bd ul li {
+    float: left;
+}
+
+.box_hd {
+    height: 30px;
+    border-bottom: 2px solid #c81623;
+}
+
+.box_hd h3 {
+    float: left;
+    width: 80px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #c81623;
+}
+
+.box_hd .tab_list {
+    float: right;
+    line-height: 30px;
+}
+
+.tab_list ul li {
+    float: left;
+}
+
+.tab_list ul li a {
+    /* ******行内a给margin 把li挤开30 */
+    margin: 0 15px;
+}
+
+.floor .w {
+    margin-top: 30px;
+}
+
+.box_bd {
+    height: 361px;
+}
+
+.tab_content_item>div {
+    height: 361px;
+    float: left;
+}
+
+.col_210 {
+    width: 210px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.col_329 {
+    width: 329px;
+}
+
+.col_221 {
+    width: 219px;
+    /* border-right: 1px solid red; */
+}
+
+.col_219 {
+    width: 219px;
+}
+
+.col_210 ul {
+    padding-left: 12px;
+}
+
+.col_210 ul li {
+    float: left;
+    width: 88px;
+    height: 35px;
+    margin-right: 10px;
+    border-bottom: 1px solid #ccc;
+    font-size: 12px;
+    line-height: 35px;
+    text-align: center;
+}
+
+.blr {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}

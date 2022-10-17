@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ol {
+            padding-left: 1000px;
+            padding-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>按下的键：</li>
+    </ul>
+    <ol>
+        <li>按下的建press：</li>
+    </ol>
+    <script>
+        // 1.keyup 和down不区分大小写
+        var ul = document.querySelector('ul');
+        document.addEventListener('keyup', function (e) {
+            console.log(e);
+            console.log(e.keyCode);
+            var li = document.createElement('li');
+            li.innerHTML = 'keyup:' + e.keyCode;
+            ul.appendChild(li);
+        })
+        // 2.keypress区分大小写
+        var ol = document.querySelector('ol');
+        document.addEventListener('keypress', function (e) {
+            console.log(e);
+            console.log(e.keyCode);
+            var li = document.createElement('li');
+            li.innerHTML = 'keyup:' + e.keyCode;
+            ol.appendChild(li);
+            if (e.keyCode == 65) {
+                alert('A')
+            }
+        })
+    </script>
+</body>
+
+</html>

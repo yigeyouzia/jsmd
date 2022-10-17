@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="yeye">
+        <div class="father">
+            <div class="son">儿子</div>
+        </div>
+    </div>
+    <div class="nav">
+        <p>我是屁</p>
+        <div>
+            <p>我是p</p>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            // 1.父 parent()  返回最近一级父亲
+            var father = $(".son").parent();
+            console.log(father);
+            // 2.子
+            // 2.1 亲儿子 children()
+            $('.nav').children('p').css('color', 'red');
+            // 2.2  所有儿子 find()  类似后代选择器
+            $('.nav').find('p').css('color', 'pink');
+            // 3.兄
+        })
+    </script>
+
+</body>
+
+</html>

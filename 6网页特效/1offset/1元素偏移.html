@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            position: relative;
+            height: 200px;
+            width: 200px;
+            background-color: pink;
+            margin: 100px;
+        }
+
+        .son {
+            position: absolute;
+            height: 100px;
+            width: 100px;
+            background-color: purple;
+            margin-left: 45px;
+        }
+
+        .w {
+            height: 100px;
+            width: 100px;
+            padding: 10px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <div class="w"></div>
+    <script>
+        // 1.offsettop left 上左偏移
+        var father = document.querySelector('.father');
+        var son = document.querySelector('.son');
+        var w = document.querySelector('.w');
+        // 2.父亲有定位返回距离父亲宽度  没有则是body
+        console.log(father.offsetTop);
+        console.log(father.offsetLeft);
+        console.log(son.offsetLeft);
+        // 3.返回宽度和高度  加上padding+border+width
+        console.log(w.offsetWidth);
+        console.log(w.offsetHeight);
+        // 4.返回带有定位的父亲  否则是body
+        console.log(son.offsetParent);  //返回带定位父亲
+        console.log(son.parentNode);  //返回父亲
+        // 5.获取位置用offset  更改大小用style
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 1.DOM对象 ： 利用原生js获取的对象
+        var myDiv = document.querySelector('div');
+        console.dir(myDiv);
+        // 2.jQuery对象  用jq获取的对象  本质：通过$把DOM元素进行包装
+        $('div');
+        console.dir($('div'));
+        // 3.jq对象和DOM对象不能混用
+    </script>
+</body>
+
+</html>

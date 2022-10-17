@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            top: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <button class="btn800">点我缓动动画800</button>
+    <button class="btn500">点我缓动动画500</button>
+    <script>
+        function animate(obj, target) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                // 步长值写在定时器里面 
+                // 正数取整往大的取
+                // 负数往小取
+                // var step = Math.ceil((target - obj.offsetLeft) / 10);
+                var step = (target - obj.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer);
+                }
+                // 将1改为一慢慢变小的值
+                // 核心算法:(目标值-现在的位置)/10
+                obj.style.left = obj.offsetLeft + step + 'px';
+            }, 15);
+        }
+        var div = document.querySelector('div');
+        var btn800 = document.querySelector('.btn800');
+        var btn500 = document.querySelector('.btn500');
+        btn800.addEventListener('click', function () {
+            animate(div, 800);
+        })
+        btn500.addEventListener('click', function () {
+            animate(div, 500);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.写法
+        // 1.1(function () { })()
+        // a形参   1实参
+        (function f1(a, b) {
+            console.log(a);
+            console.log(b);
+            var num = 10;  //局部变量
+        })(1, 2); //必须加分号
+
+        (function f2(a, b) {
+            console.log(a);
+            console.log(b);
+            var num = 10;  //局部变量
+        }(3, 4));
+        // 2.立即执行函数最大左右就是独立创建了一个作用域  不会冲突
+    </script>
+</body>
+
+</html>

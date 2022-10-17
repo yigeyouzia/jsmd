@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 200px;
+        }
+
+        span {
+            display: block;
+            float: left;
+            margin-left: 10px;
+            height: 50px;
+            width: 50px;
+            font-size: larger;
+            font-weight: 800;
+            line-height: 50px;
+            text-align: center;
+            background-color: pink;
+            color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+    <script>
+        // 1.获取元素
+        var hour = document.querySelector('.hour');
+        var minute = document.querySelector('.minute');
+        var second = document.querySelector('.second');
+        var inputTime = +new Date('2022-9-29 00:00:00');  // 返回用户输入毫秒数
+        // 先调用一次  防止刷新有空白
+        countDown();
+        // 2.开启定时器   
+        window.setInterval(countDown, 1000);
+        function countDown(time) {
+            var nowTime = +new Date();  //没有参数  返回当前时间戳
+            var times = (inputTime - nowTime) / 1000;  //秒数
+            var s = parseInt(times % 60);
+            s = s < 10 ? '0' + s : s;
+            second.innerHTML = s;
+            var m = parseInt(times / 60 % 60);
+            m = m < 10 ? '0' + m : m;
+            minute.innerHTML = m;
+            var h = parseInt(times / 60 / 60 % 24);
+            h = h < 10 ? '0' + h : h;
+            hour.innerHTML = h;
+        }
+    </script>
+</body>
+
+</html>

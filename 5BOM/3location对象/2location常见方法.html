@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>可以回退</button>
+    <button>不可以回退</button>
+    <button>点我刷新</button>
+    <script>
+        var btn = document.querySelectorAll('button');
+        btn[0].addEventListener("click", function () {
+            // 1.记录浏览历史  可以回退
+            location.assign('http://www.baidu.com');
+        })
+        btn[1].addEventListener("click", function () {
+            // 2.不可以回退
+            location.replace('http://www.baidu.com')
+        })
+        btn[2].addEventListener("click", function () {
+            // 2.刷新页面  true  
+            location.reload(true);
+        })
+
+
+    </script>
+</body>
+
+</html>

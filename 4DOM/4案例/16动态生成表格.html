@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 100px auto;
+            text-align: center;
+            border-collapse: collapse;
+            width: 500px;
+        }
+
+        td,
+        th {
+            border: 1px solid #333;
+
+        }
+
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        // 1.准备学生数据
+        var datas = [
+            {
+                name: 'cyt',
+                subject: 'javascript',
+                score: 100
+            }, {
+                name: 'xry',
+                subject: 'javascript',
+                score: 99
+            }, {
+                name: 'xxx',
+                subject: 'javascript',
+                score: 88
+            }, {
+                name: 'xxx',
+                subject: 'javascript',
+                score: 88
+            }, {
+                name: 'xxx',
+                subject: 'javascript',
+                score: 88
+            },
+        ];
+        // 2. 往tbody创建行： 有几个人创建几行tr
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < datas.length; i++) {
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            // 3.行里面创建单元格
+            for (k in datas[i]) {
+                var td = document.createElement('td');
+                // datas[i][k] 属性值
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td);
+            }
+            //  4.创建删除单元格
+            var td = document.createElement('td');
+            td.innerHTML = "<a href='javascript: ; '>删除</a>";
+            tr.appendChild(td);
+        }
+        // 删除元素
+        var as = document.querySelectorAll('a');
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+                // a的爸爸是td  的爸爸是tr
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+
+        // for (var k in obj) {
+        //     k得到的是属性名
+        //     obj[k] 得到的是属性值
+        // }
+    </script>
+</body>
+
+</html>

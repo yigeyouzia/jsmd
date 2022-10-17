@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="http://www.baidu.com">点我前往下一个链接</a>
+    <button>前进</button>
+    <button>后退</button>
+    <script>
+        var btn = document.querySelectorAll("button");
+        btn[0].addEventListener("click", function () {
+            // 1.forward前进一步
+            history.forward();
+            // 2. go(参数步数)  负数可以后退
+            history.go(1);
+        })
+        btn[1].addEventListener("click", function () {
+            history.back();
+        })
+    </script>
+</body>
+
+</html>

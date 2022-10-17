@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.全局作用域或者普通函数的this指向全局对象window（定时器中的this指向window）
+        console.log(this);  //window
+        function fn() {
+            console.log(this);  //window
+        }
+        fn();
+        window.setInterval(function () {
+            console.log(this);
+        }, 1000)
+        // 2.方法调用this指向方法调用的对象
+        var op = {
+            sayHi: function () {
+                console.log(this);  //指向sayHi
+            }
+        }
+        op.sayHi();
+        // 3.构造函数中的this指向构造函数的实例
+        function Fun() {
+            console.log(this);  //指向fun实例对象
+        }
+        var fun = new Fun();
+        fun;
+    </script>
+</body>
+
+</html>

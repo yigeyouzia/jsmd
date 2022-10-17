@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="te"></p>
+    <script>
+        var t = "";
+        // 1.创建方式
+        var arr = new Array();  //new
+        var arr = [];           //字面量
+        var arr1 = [1, "2", 'cyt', true];  //数组中可以存放任意数据类型
+        //2,访问
+        console.log(arr1);
+        console.log(arr1[2]);  //cyt
+        //2.新增数据
+        document.getElementById('te').innerHTML = arr1.length + "<br/>";
+        console.log(arr1.length);
+        arr1.length = 10;
+        console.log(arr1);
+    </script>
+</body>
+
+</html>
