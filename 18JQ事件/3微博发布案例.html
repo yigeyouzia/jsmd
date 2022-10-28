@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #ccc;
+        }
+
+        .box {
+            margin: 100px auto;
+            width: 800px;
+            height: 440px;
+            border: 2px solid #666;
+            box-shadow: 2px 2px 2px rgb(0, 0, 0, .5);
+            background-color: #fff;
+        }
+
+        textarea {
+            width: 600px;
+        }
+
+        ul {
+            width: 450px;
+            padding-left: 80px;
+        }
+
+        ul li {
+            list-style: none;
+            border-bottom: 1px dashed #cccccc;
+            display: none;
+        }
+
+        ul li a {
+            float: right;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box" id="weibo">
+        <span>微博发布</span>
+        <textarea name="" class="txt" cols="30" rows="10"></textarea>
+        <button class="btn">发布</button>
+        <ul>
+
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            // 点击发布创建li 
+            $(".btn").on("click", function () {
+                var li = $("<li></li>");
+                li.html($(".txt").val() + "<a href='javascript:;'>删除</a>");
+                $("ul").prepend(li);
+                // 下拉动画
+                li.slideDown();
+                // 清空留言板
+                $(".txt").val('');
+            })
+            $("ul").on("click", "a", function () {
+                // 先上拉 再删除    
+                $(this).parent().slideUp(function () {
+                    $(this).remove();
+                });
+            })
+
+        })
+    </script>
+</body>
+
+</html>

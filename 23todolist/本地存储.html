@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var todolist = [{
+            title: "我是标题1",
+            done: false
+        }, {
+            title: "我是标题2",
+            done: false
+        },]
+        // 1.本地存储先把数组对象转化成字符串对象 JSON.stringify()
+        localStorage.setItem("todo", JSON.stringify(todolist));
+        var data = localStorage.getItem("todo");
+        // 2.获取本地存储数据 字符串转换成数组对象 JSON.parse()
+        data = JSON.parse(data);
+        console.log(data);
+        console.log(data[0].title);
+        // 3.按下回车弹出
+        $(document).on("keydown", function (e) {
+            if (e.keyCode === 13) {
+                alert(11);
+            }
+        })
+    </script>
+</body>
+
+</html>

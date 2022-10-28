@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var targetObj = {
+            id: 0,
+            msg: {
+                sex: "男"
+            }
+        };
+        var obj = {
+            id: 1,
+            name: "andy",
+            msg: {
+                age: 18
+            }
+        }
+        // 把obj拷贝给targetObj  数据覆盖
+        // 1.不加true是浅拷贝
+        // $.extend(targetObj, obj);
+        console.log(targetObj);
+        // 2.深拷贝 msg内容 合并  如果属性不冲突会合并
+        $.extend(true, targetObj, obj);   //  msg{age:18,sex:"男"}
+        console.log(targetObj);
+
+    </script>
+</body>
+
+</html>

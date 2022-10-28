@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <ul>
+        <li>原先的li</li>
+    </ul>
+    <div class="test">我是原先的div</div>
+    <script>
+        // 1.创建元素
+        var li1 = $("<li>我是前面创建的li </li>");
+        var li2 = $("<li>我是后面创建的li </li>");
+        // 2.添加元素
+
+        // 2.1内部添加
+        $("ul").prepend(li1);  //放在前面
+        $("ul").append(li2);  //放在后面
+        // 2.2外部添加
+        var div1 = $("<div>前面div </div>");
+        var div2 = $("<div>后面div </div>");
+        $(".test").after(div2);
+        $(".test").before(div1);
+        // 3.删除元素 
+        $("ul").remove();  //删除本身  ul不在
+        $("ul").empty();  //  删除子节点  ul还在
+        $("ul").html("");  // 删除子节点  ul还在
+
+    </script>
+</body>
+
+</html>

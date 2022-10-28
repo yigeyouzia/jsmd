@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            padding: 10px;
+            border: 15px solid red;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 1.width()  /  height()  获取元素长高大小    
+        console.log($("div").width());
+        // $("div").width(300);
+        // 2.InnerWidth / Innerheight   加上padding   220
+        console.log($("div").innerWidth());
+        // 3.outerWidth() / outerHeight()     加上padding 和border   250
+        console.log($("div").outerWidth());
+        // 4.outerWidth(true) / outerHeight(true)     加上padding 和 border margin   290
+        console.log($("div").outerWidth(true));
+
+
+    </script>
+</body>
+
+</html>

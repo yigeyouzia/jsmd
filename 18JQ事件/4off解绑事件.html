@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <ul>
+        <li>孩子</li>
+        <li>孩子</li>
+        <li>孩子</li>
+    </ul>
+    <p>我是p</p>
+    <script>
+        $(function () {
+            $("div").on({
+                click: function () {
+                    console.log("我点击了");
+                },
+                mouseover: function () {
+                    console.log("我经过了");
+                }
+            })
+            // 1.事件解绑
+            $("div").off();  // 解绑所有事件
+            $("div").off("click");   // 接触click事件
+            // 2.事件委托解绑
+            $("ul").on("click", "li", function () {
+                alert("11");
+            })
+            // 解绑
+            $("ul").off("click", "li");
+            // 3.one事件绑定  只触发一次
+            $("p").one("click", function () {
+                alert("1");
+            })
+        });
+    </script>
+</body>
+
+</html>

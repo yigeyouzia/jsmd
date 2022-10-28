@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        div {
+            height: 200px;
+            width: 200px;
+            background-color: pink;
+        }
+
+        .box {
+            height: 200px;
+            width: 200px;
+            margin: 200px;
+            background-color: palegreen;
+        }
+
+        .current {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div class="box"></div>
+    <script>
+        // 事件处理on
+        $("div").on({
+            mouseenter: function (e) {
+                $(this).css("background", "skyblue");
+            },
+            click: function () {
+                $(this).css("background", "purple");
+            },
+            mouseleave: function (e) {
+                $(this).css("background", "blue");
+            }
+        })
+        // 处理相同事件
+        $(".box").on("moseover moseout", function (e) {
+            $(this).toggleClass("current");
+        })
+    </script>
+</body>
+
+</html>

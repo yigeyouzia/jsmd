@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>我是孩子</li>
+        <li>我是孩子</li>
+        <li>我是孩子</li>
+        <li>我是孩子</li>
+        <li>我是孩子</li>
+    </ul>
+    <ol>
+
+    </ol>
+    <script>
+        // 1.事件委托
+        // 给ul添加点击事件  点击li 触发的是li
+        $("ul").on("click", "li", function () {
+            // alert(11);
+            $(this).css("background", "pink");
+            $(this).css("color", "red");
+        })
+        // 2.on可以给动态创建的元素绑定事件
+        $("ol").on("click", "li", function () {
+            $(this).css("background", "red");
+        })
+        var li = $("<li>我是后来创建的li</li>");
+        $("ol").append(li);
+    </script>
+</body>
+
+</html>
